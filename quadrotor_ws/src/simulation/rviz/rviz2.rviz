@@ -10,7 +10,6 @@ Panels:
         - /PointCloud21
         - /OccupancyGrid1
         - /TF1
-        - /TF1/Status1
       Splitter Ratio: 0.5
     Tree Height: 514
   - Class: rviz/Selection
@@ -59,7 +58,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /realsense/depth/image
+      Image Topic: /realsense/rgb/left_image_raw
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -141,11 +140,7 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        world:
-          av-desired:
-            {}
-          body:
-            {}
+        Quadrotor/TrueState:
           true_body:
             Quadrotor/Sensors/DepthCamera:
               {}
@@ -155,13 +150,18 @@ Visualization Manager:
             depth_camera:
               Quadrotor/DepthCamera:
                 {}
+        world:
+          av-desired:
+            {}
+          body:
+            {}
       Update Interval: 0
       Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
     Default Light: true
-    Fixed Frame: true_body
+    Fixed Frame: world
     Frame Rate: 30
   Name: root
   Tools:
@@ -185,7 +185,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 4.591373920440674
+      Distance: 28.292152404785156
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -201,9 +201,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.32520291209220886
+      Pitch: 0.32020291686058044
       Target Frame: <Fixed Frame>
-      Yaw: 5.286763668060303
+      Yaw: 2.586757183074951
     Saved: ~
 Window Geometry:
   Displays:
