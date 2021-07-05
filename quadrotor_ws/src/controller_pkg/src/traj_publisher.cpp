@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 #else
         // Circle
         double R = 5.0;
-        double timeScale = 2.0;
+        double timeScale = 6.0;
         desired_pose.setOrigin(
                         origin + tf::Vector3(R*sin(t/timeScale), R*cos(t/timeScale), 2)
                      );
