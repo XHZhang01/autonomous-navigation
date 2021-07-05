@@ -12,6 +12,37 @@
 		
 		<!-- data source to integrate (PointCloud2) -->
 		<remap from="cloud_in" to="/realsense/depth/points_xyz" />
+
+
+
+        <!-- 机器人坐标系 base_link，滤除地面需要该 frame -->	
+		<param name = "base_frame_id" type = "string" value = "world" />
+
+		<!-- filter ground plane, distance value should be big!  -->
+		<param name = "filter_ground" type = "bool" value = "true" />
+		<param name = "ground_filter/distance" type = "double" value = "2" />
+		<!-- 分割地面的 Z 轴阈值 value 值 -->
+		<param name = "ground_filter/plane_distance" type = "double" value = "1" />
+
+		<!-- 直通滤波的 Z 轴范围，保留 [-1.0, 10.0] 范围内的点 -->
+		<param name = "pointcloud_max_z" type = "double" value = "30.0" />
+		<param name = "pointcloud_min_z" type = "double" value = "0" />
+
+		<param name = "filter_speckles" type = "bool" value = "true" />
+
+		<param name = "height_map" value = "false" />
+		<param name = "colored_map" value = "true" />
+		
+		<!-- 增加了半径滤波器 -->
+		<param name = "outrem_radius" type = "double" value = "1.0" />
+		<param name = "outrem_neighbors" type = "int" value = "10" />
+
+		<!-- when building map, set to false to speed up!!! -->
+		<param name = "latch" value = "false" /> 
+
+
+
+
 	
   </node>
 
