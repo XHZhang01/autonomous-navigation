@@ -17,6 +17,24 @@
     <arg name="depth_image_topic" value="$(arg depth_image_topic)" />
     <arg name="depth_info_topic" value="$(arg depth_info_topic)" />
   </include>
+  
+  <!-- convert the Depthimage to Pointcloud-->
+  <include file="$(find simulation)/launch/point_cloud_convert.launch" />
+
+  <!-- 3D-Mapping using Octomap-->
+  <include file="$(find simulation)/launch/octomap_mapping.launch" />
+
+  <!-- rviz-->
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" />
+  
+  <!-- run traj_publisher -->
+  <node type="traj_publisher" name="traj_publisher" pkg="controller_pkg"/>
+  
+  <!-- run controller -->
+  <node type="controller_node" name="controller_node" pkg="controller_pkg"/>
+
+
+
 
   <node name="Simulation" pkg="simulation" type="Linux_build.x86_64"/>
 
@@ -61,6 +79,6 @@
         name="depth_camera_to_body"      args="0 0 0 0 0 0 /true_body /depth_camera" />
 
   <node pkg="tf2_ros" type="static_transform_publisher"
-        name="depth_camera_frame_to_body"      args="0 0 0 0 0 0 /true_body /Quadrotor/Sensors/DepthCamera" />
+        name="depth_camera_frame_to_body"      args="0 0 0 0 0 -1.571  /true_body /Quadrotor/Sensors/DepthCamera" />
 
 </launch>
