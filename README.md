@@ -5,3 +5,6 @@ sudo apt-get install ros-noetic-depth-image-proc
 sudo apt-get install ros-kinetic-octomap-ros 
 sudo apt-get install ros-kinetic-octomap-msgs
 sudo apt-get install ros-kinetic-octomap-server
+
+
+roslaunch simulation simulation.launch
