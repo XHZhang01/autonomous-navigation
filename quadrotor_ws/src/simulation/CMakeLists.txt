@@ -13,6 +13,7 @@ elseif(COMPILER_SUPPORTS_CXX0X)
 endif()
 
 find_package(catkin REQUIRED COMPONENTS
+	std_srvs
 	geometry_msgs
 	roscpp
 	rospy
@@ -57,4 +58,11 @@ target_link_libraries(state_estimate_corruptor_node  ${catkin_LIBRARIES})
 target_link_libraries(w_to_unity ${catkin_LIBRARIES} socket++ -pthread)
 
 add_dependencies(w_to_unity libsocket ${catkin_EXPORTED_TARGETS})
+
+
+# octomap_reset_client.cpp
+
+add_executable(octomap_reset_client src/octomap_reset_client.cpp)
+target_link_libraries(octomap_reset_client ${catkin_LIBRARIES})
+# add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 
