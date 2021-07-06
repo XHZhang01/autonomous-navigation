@@ -28,14 +28,15 @@
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" />
   
   <!-- run traj_publisher -->
-  <node type="traj_publisher" name="traj_publisher" pkg="controller_pkg"/>
+  <!-- <node type="traj_publisher" name="traj_publisher" pkg="controller_pkg"/> -->
+  <node type="traj_publisher_mod" name="traj_publisher" pkg="controller_pkg" output="screen"/>
   
   <!-- run controller -->
   <node type="controller_node" name="controller_node" pkg="controller_pkg"/>
 
   <!-- reset the Octomap after x seconds, avoiding mapping during unstable flight phase -->
-  <node pkg="simulation" type="octomap_reset_client"
-        name="octomap_reset_client"   output="screen"   args="5" />
+  <!-- <node pkg="simulation" type="octomap_reset_client"
+        name="octomap_reset_client"   output="screen"   args="5" /> -->
 
 
 
