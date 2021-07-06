@@ -21,8 +21,8 @@
   <!-- convert the Depthimage to Pointcloud-->
   <include file="$(find simulation)/launch/point_cloud_convert.launch" />
 
-  <!-- 3D-Mapping using Octomap-->
-  <include file="$(find simulation)/launch/octomap_mapping.launch" />
+  <!-- 3D-Mapping using Octomap
+  <include file="$(find simulation)/launch/octomap_mapping.launch" /> -->
 
   <!-- rviz-->
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" />
@@ -32,6 +32,10 @@
   
   <!-- run controller -->
   <node type="controller_node" name="controller_node" pkg="controller_pkg"/>
+
+  <!-- run camera_info_update -->
+  <!-- <node type="camera_info_update_node" name="camera_info_update_node" pkg="simulation"/> -->
+
 
 
 
@@ -79,6 +83,9 @@
         name="depth_camera_to_body"      args="0 0 0 0 0 0 /true_body /depth_camera" />
 
   <node pkg="tf2_ros" type="static_transform_publisher"
-        name="depth_camera_frame_to_body"      args="0 0 0 -1.571 0 -1.571  /true_body /Quadrotor/Sensors/DepthCamera" />
+        name="depth_camera_frame_to_body"      args="0 0 0 -1.571 0 -1.571 /body /Quadrotor/Sensors/DepthCamera" />
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher"
+        name="depth_camera_frame_to_estimated_body"      args="0 0 0 -1.571 0 -1.571  /body /Quadrotor/Sensor/DepthCamera_corrupted" /> -->
 
 </launch>

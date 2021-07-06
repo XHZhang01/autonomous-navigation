@@ -7,7 +7,7 @@
         args="load depth_image_proc/point_cloud_xyz nodelet_manager">
     <remap from="camera_info" to="/realsense/depth/camera_info"/>
     <remap from="image_rect" to="/realsense/depth/image"/>
-    <remap from="points" to="/realsense/depth/points_xyz"/>
+    <remap from="points" to="/realsense/depth/pointcloud"/>
   </node>
 
 
