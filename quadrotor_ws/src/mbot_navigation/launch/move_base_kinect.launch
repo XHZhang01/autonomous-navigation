@@ -13,7 +13,7 @@
     <rosparam file="$(find mbot_navigation)/config/mbot_kinect/dwa_local_planner_params.yaml" command="load" />
 
     <remap from="/map" to="/projected_map" />
-    
+    <remap from="/odom" to="/current_state_est" />
   </node>
   
 </launch>

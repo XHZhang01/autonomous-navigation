@@ -1,5 +1,5 @@
 global_costmap:
-  global_frame: odom
+  global_frame: world
   robot_base_frame: body
 
   update_frequency: 10.0
