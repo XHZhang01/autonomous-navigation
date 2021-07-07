@@ -25,8 +25,10 @@
   <include file="$(find simulation)/launch/octomap_mapping.launch" />
   
   <!-- rviz-->
-  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" />
-  
+  <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" /> -->
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mbot_navigation)/rviz/nav_kinect.rviz" />
+
+
   <!-- run traj_publisher -->
   <!-- <node type="traj_publisher" name="traj_publisher" pkg="controller_pkg"/> -->
   <node type="traj_publisher_mod" name="traj_publisher" pkg="controller_pkg" output="screen"/>
@@ -38,6 +40,8 @@
   <!-- <node pkg="simulation" type="octomap_reset_client"
         name="octomap_reset_client"   output="screen"   args="5" /> -->
 
+  <!-- 运行move_base节点 -->
+  <include file="$(find mbot_navigation)/launch/move_base_kinect.launch" />
 
 
 
@@ -88,6 +92,10 @@
   <!-- change the parent frame from '/true_body' to 'body' -->
   <node pkg="tf2_ros" type="static_transform_publisher"
         name="depth_camera_frame_to_body"      args="0 0 0 -1.571 0 -1.571 /body /Quadrotor/Sensors/DepthCamera" />
+ 
+ <!-- change the parent frame from '/true_body' to 'body' -->
+  <node pkg="tf2_ros" type="static_transform_publisher"
+        name="odom_to_world"      args="0 0 0 0 0 0 /world /odom" />     
 
   <!-- <node pkg="tf2_ros" type="static_transform_publisher"
         name="depth_camera_frame_to_estimated_body"      args="0 0 0 -1.571 0 -1.571  /body /Quadrotor/Sensor/DepthCamera_corrupted" /> -->

@@ -70,14 +70,14 @@ int main(int argc, char **argv)
                 // std::cout<<"Desired Orientation" << count << std::endl;
                 desired_pose.setRotation(q);
                 
-                ROS_INFO("%f", t );
+                // ROS_INFO("%f", t );
                 
 
         }else
         {
 
                 // cmd_vel
-                ROS_INFO("Controled by /cmd_vel", t );
+                // ROS_INFO("Controled by /cmd_vel", t );
                 
                 delta_t = t_before - t;
                 phi = phi + delta_t * vel_got.angular.z ;
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
                 tf::Quaternion q;
                 q.setRPY(0,0,-phi);
                 // count++;
-                std::cout<<"Desired Orientation" << count << std::endl;
+                // std::cout<<"Desired Orientation" << count << std::endl;
                 desired_pose.setRotation(q);
                 
                 // ROS_INFO("%f", t );
@@ -122,12 +122,12 @@ int main(int argc, char **argv)
         msg.accelerations[0] = acceleration;
         desired_state_pub.publish(msg);
 
-        std::stringstream ss;
-        ss << "Trajectory Position"
-           << " x:" << desired_pose.getOrigin().x()
-           << " y:" << desired_pose.getOrigin().y()
-           << " z:" << desired_pose.getOrigin().z();
-        ROS_INFO("%s", ss.str().c_str());
+        // std::stringstream ss;
+        // ss << "Trajectory Position"
+        //    << " x:" << desired_pose.getOrigin().x()
+        //    << " y:" << desired_pose.getOrigin().y()
+        //    << " z:" << desired_pose.getOrigin().z();
+        // ROS_INFO("%s", ss.str().c_str());
 
  #if TFOUTPUT
         br.sendTransform(tf::StampedTransform(desired_pose, ros::Time::now(),
