@@ -1,5 +1,5 @@
 obstacle_range: 5
-raytrace_range: 3.0
+raytrace_range: 6
 footprint: [[1, 1], [1, -1], [-1, -1], [-1, 1]]
 #footprint_inflation: 0.01
 #robot_radius: 0.175
@@ -8,4 +8,4 @@ cost_scaling_factor: 3.0
 map_type: costmap
 #transform_tolerance: 1
 observation_sources: pointcloud
-pointcloud: {data_type: PointCloud2, topic: /realsense/depth/pointcloud, marking: true, clearing: true, min_obstacle_height: 0, max_obstacle_height: 6}
+pointcloud: {data_type: PointCloud2, topic: /realsense/depth/pointcloud, marking: true, clearing: true, min_obstacle_height: 4, max_obstacle_height: 8}
