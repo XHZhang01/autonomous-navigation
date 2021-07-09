@@ -44,7 +44,9 @@ int main(int argc, char *argv[])
       UnityHeader header;
       header.type = static_cast<UnityMessageType>(stream_reader.ReadUInt());
       uint64_t timestamp_raw = stream_reader.ReadUInt64();
-      header.timestamp = static_cast<double>(timestamp_raw) * 1e-7;
+      // header.timestamp = static_cast<double>(timestamp_raw) * 1e-7;
+      header.timestamp = ros_time;
+      
       header.name = stream_reader.ReadString();
       
       if(header.type < UnityMessageType::MESSAGE_TYPE_COUNT) {

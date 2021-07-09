@@ -8,6 +8,9 @@
   <arg name="depth_image_topic" default="/realsense/depth/image" />
   <arg name="depth_info_topic" default="/realsense/depth/camera_info" />
 
+  <!-- <param name="use_sim_time" value="true"/> -->
+
+
   <include file="$(find simulation)/launch/unity_ros.launch" >
     <arg name="load_params" value="$(arg load_params)" />
     <arg name="right_image_topic" value="$(arg right_image_topic)" />
@@ -90,11 +93,10 @@
   <node pkg="tf2_ros" type="static_transform_publisher"
         name="depth_camera_frame_to_body"      args="0 0 0 -1.571 0 -1.571 /body /Quadrotor/Sensors/DepthCamera" />
  
- <!-- change the parent frame from '/true_body' to 'body' -->
-  <node pkg="tf2_ros" type="static_transform_publisher"
-        name="odom_to_world"      args="0 0 0 0 0 0 /world /odom" />     
-
+ <!-- odom_to_world -->
   <!-- <node pkg="tf2_ros" type="static_transform_publisher"
-        name="depth_camera_frame_to_estimated_body"      args="0 0 0 -1.571 0 -1.571  /body /Quadrotor/Sensor/DepthCamera_corrupted" /> -->
+        name="odom_to_world"      args="0 0 0 0 0 0 /world /odom" />      -->
+
+
 
 </launch>
