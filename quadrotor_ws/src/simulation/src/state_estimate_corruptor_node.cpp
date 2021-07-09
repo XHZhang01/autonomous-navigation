@@ -31,6 +31,7 @@ class StateEstimateCorruptorNode {
 		corrupted_pose_pub     = nh.advertise<geometry_msgs::PoseStamped>("/pose_est", 1);
 		corrupted_velocity_pub = nh.advertise<geometry_msgs::TwistStamped>("/twist_est", 1);
 		corrupted_state_pub    = nh.advertise<nav_msgs::Odometry>("/current_state_est", 1);
+		corrupted_state_pub_foot    = nh.advertise<nav_msgs::Odometry>("/current_state_est_foot", 1);
 
 		ros::NodeHandle pnh("~");
 		fla_utils::SafeGetParam(pnh, "pos_white_sig", pos_white_sigma_);
@@ -115,11 +116,13 @@ class StateEstimateCorruptorNode {
 
 		PublishCorruptedTwist(twist);
 		PublishCorruptedState(twist);
+		PublishCorruptedState_Foot(twist);
 	}
 
 	void PublishCorruptedPose(geometry_msgs::PoseStamped const& corrupt_pose) {
 		corrupted_pose_pub.publish(corrupt_pose);
 		PublishBodyTransform(corrupt_pose);
+		PublishBodyTransform_Foot(corrupt_pose);
 		pose_corrupted_ = corrupt_pose;
 	}
 
@@ -135,6 +138,27 @@ class StateEstimateCorruptorNode {
         corrupted_state.pose.pose = pose_corrupted_.pose;
 
         corrupted_state_pub.publish(corrupted_state);
+	}
+	
+	void PublishCorruptedState_Foot(geometry_msgs::TwistStamped const& corrupt_twist) {
+        nav_msgs::Odometry corrupted_state;
+        //corrupted_state.pose = corrupt_pose;
+
+        corrupted_state.header.stamp = corrupt_twist.header.stamp;
+		corrupted_state.header.frame_id = "world";
+		corrupted_state.child_frame_id = "body_foot";
+
+		
+		
+
+
+        corrupted_state.twist.twist = corrupt_twist.twist;
+        corrupted_state.twist.twist.linear.z = 0;
+
+        corrupted_state.pose.pose = pose_corrupted_.pose;
+		corrupted_state.pose.pose.position.z = 0;
+
+        corrupted_state_pub_foot.publish(corrupted_state);
 	}
 
 	void PublishCorruptedTwist(geometry_msgs::TwistStamped const& twist) {
@@ -164,6 +188,34 @@ class StateEstimateCorruptorNode {
 		br.sendTransform(transformStamped);
 	}
 
+	void PublishBodyTransform_Foot(geometry_msgs::PoseStamped const& pose) {
+		static tf2_ros::TransformBroadcaster br;
+		geometry_msgs::TransformStamped transformStamped;
+
+		transformStamped.header.stamp = pose.header.stamp;
+		transformStamped.header.frame_id = "world";
+		transformStamped.child_frame_id = "body_foot";
+		transformStamped.transform.translation.x = pose.pose.position.x;
+		transformStamped.transform.translation.y = pose.pose.position.y;
+		transformStamped.transform.translation.z = 0;
+		
+		tf::Quaternion quat;
+        tf::quaternionMsgToTF(pose.pose.orientation, quat);
+
+	    double roll, pitch, yaw;//定义存储roll,pitch and yaw的容器
+        tf::Matrix3x3(quat).getRPY(roll, pitch, yaw); //进行转换
+		
+		geometry_msgs::Quaternion q;
+		q = tf::createQuaternionMsgFromRollPitchYaw(0,0,yaw);
+
+		transformStamped.transform.rotation.x = q.x;
+		transformStamped.transform.rotation.y = q.y;
+		transformStamped.transform.rotation.z = q.z;
+		transformStamped.transform.rotation.w = q.w;
+
+		br.sendTransform(transformStamped);
+	}
+
 	bool virgin = true;
 	size_t pose_count = 0;
 
@@ -174,6 +226,7 @@ class StateEstimateCorruptorNode {
 	ros::Publisher corrupted_pose_pub;
 	ros::Publisher corrupted_velocity_pub;
 	ros::Publisher corrupted_state_pub;
+    ros::Publisher corrupted_state_pub_foot;
 
 	std::shared_ptr<tf2_ros::TransformListener> tf_listener_;
 	tf2_ros::Buffer tf_buffer_;
