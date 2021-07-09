@@ -66,3 +66,6 @@ add_executable(octomap_reset_client src/octomap_reset_client.cpp)
 target_link_libraries(octomap_reset_client ${catkin_LIBRARIES})
 # add_dependencies(add_two_ints_client beginner_tutorials_gencpp)
 
+# time_server.cpp
+add_executable(time_server src/time_server.cpp)
+target_link_libraries(time_server ${catkin_LIBRARIES})

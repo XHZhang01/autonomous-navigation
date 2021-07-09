@@ -8,7 +8,9 @@
   <arg name="depth_image_topic" default="/realsense/depth/image" />
   <arg name="depth_info_topic" default="/realsense/depth/camera_info" />
 
-  <!-- <param name="use_sim_time" value="true"/> -->
+ <!-- run a node named time_server to force the ros_time starts from 0-->
+  <param name="use_sim_time" value="true"/>
+  <node name="time_server" pkg="simulation" type="time_server"/>
 
 
   <include file="$(find simulation)/launch/unity_ros.launch" >
