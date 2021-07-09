@@ -9,4 +9,4 @@ sudo apt-get install ros-kinetic-octomap-server
 
 roslaunch simulation simulation.launch
 
-roslaunch mbot_teleop mbot_teleop.launch
+rosrun teleop_twist_keyboard_cpp teleop_twist_keyboard
