@@ -82,7 +82,7 @@ int main(int argc, char **argv)
                 delta_t = t_before - t;
                 phi = phi + delta_t * vel_got.angular.z ;
                 origin = origin +  delta_t * tf::Vector3(
-                        -vel_got.linear.x * cos(phi), vel_got.linear.x * sin(phi), 0);
+                        -vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi), vel_got.linear.x * sin(phi)- vel_got.linear.y* cos(phi), 0);
 
                
                 desired_pose.setOrigin(origin+displacement);
