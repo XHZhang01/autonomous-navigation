@@ -331,6 +331,8 @@ Visualization Manager:
           Value: true
         Quadrotor/TrueState:
           Value: true
+        av-desired:
+          Value: true
         body:
           Value: true
         body_foot:
@@ -351,6 +353,8 @@ Visualization Manager:
       Show Names: true
       Tree:
         world:
+          av-desired:
+            {}
           body:
             Quadrotor/Sensors/DepthCamera:
               {}

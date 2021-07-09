@@ -58,7 +58,7 @@ int main(int argc, char **argv)
 
         tf::Vector3 displacement(0,0,5);
 
-        if (t <= 24)
+        if (t <= 12)
         {
                 // Static Pose
                 
