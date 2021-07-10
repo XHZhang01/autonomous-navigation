@@ -22,13 +22,12 @@
       <param name="scan_time" value="0.03"/>
   </node> -->
 
+ <!-- run the node pointcloud_to_laserscan，convert pointcloud to Laserscan -->
   <node pkg="nodelet" type="nodelet" name="nodelet2"
         args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet nodelet_manager">
       <remap from="cloud_in" to="/realsense/depth/pointcloud" />
       <remap from="scan" to="/realsense/depth/scan" />
-      <!-- <param name="target_frame" value="Quadrotor/Sensors/DepthCamera" /> -->
       <param name="target_frame" value="body" />
-      <!-- <param name="scan_time" value="0.03"/> -->
   </node>
 
 
