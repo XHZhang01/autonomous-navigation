@@ -10,3 +10,5 @@ sudo apt-get install ros-kinetic-octomap-server
 roslaunch simulation simulation.launch
 
 rosrun teleop_twist_keyboard_cpp teleop_twist_keyboard
+
+rosrun mbot_navigation move_test.py 
