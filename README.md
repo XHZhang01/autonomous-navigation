@@ -9,6 +9,9 @@ sudo apt-get install ros-kinetic-octomap-ros
 sudo apt-get install ros-kinetic-octomap-msgs
 sudo apt-get install ros-kinetic-octomap-server
 
+##安装pointcloud-to-laserscan
+sudo apt-get install ros-noetic-pointcloud-to-laserscan
+
 ##launch
 
 roslaunch simulation simulation.launch

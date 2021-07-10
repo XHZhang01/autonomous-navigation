@@ -23,7 +23,7 @@
     <arg name="depth_info_topic" value="$(arg depth_info_topic)" />
   </include>
   
-  <!-- convert the Depthimage to Pointcloud-->
+  <!-- convert the Depthimage to Pointcloud and laserscann-->
   <include file="$(find simulation)/launch/point_cloud_convert.launch" />
 
   <!-- 3D-Mapping using Octomap-->

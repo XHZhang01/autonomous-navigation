@@ -4,17 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Global Options1
-        - /Grid1
-        - /Map1
-        - /Local Plan1
-        - /Goal Pose1
-        - /Inflated Obstacles1
-        - /PointCloud21
-        - /OccupancyGrid1
-        - /OccupancyMap1
-        - /TF1
-        - /Image1
+        - /LaserScan1
       Splitter Ratio: 0.65234375
     Tree Height: 514
   - Class: rviz/Selection
@@ -404,7 +394,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 167.4165496826172
+      Distance: 176.32623291015625
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -412,17 +402,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 39.986549377441406
-        Y: -4.548207759857178
-        Z: -1.60702383518219
+        X: 25.790260314941406
+        Y: -6.766805171966553
+        Z: -17.159029006958008
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5697963237762451
+      Pitch: 1.3847965002059937
       Target Frame: <Fixed Frame>
-      Yaw: 3.1385693550109863
+      Yaw: 3.438568115234375
     Saved: ~
 Window Geometry:
   Displays:
