@@ -27,7 +27,7 @@
   <include file="$(find simulation)/launch/point_cloud_convert.launch" />
 
   <!-- 3D-Mapping using Octomap-->
-  <include file="$(find simulation)/launch/octomap_mapping.launch" />
+  <!-- <include file="$(find simulation)/launch/octomap_mapping.launch" /> -->
   
   <!-- rviz-->
   <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" /> -->
@@ -47,6 +47,10 @@
 
   <!-- 运行move_base节点 -->
   <include file="$(find mbot_navigation)/launch/move_base_kinect.launch" />
+
+  <!-- Sending Goal -->
+  <node name="Goal" pkg="mbot_navigation" type="move_test"/>
+
 
 
   <node name="Simulation" pkg="simulation" type="Linux_build.x86_64"/>
@@ -73,8 +77,8 @@
 
 
 
-  <node pkg="tf2_ros" type="static_transform_publisher"
-        name="sim_true_body"      args="0 0 0 0 0 0 /Quadrotor/TrueState /true_body" />
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher"
+        name="sim_true_body"      args="0 0 0 0 0 0 /world /Quadrotor/TrueState " /> -->
 
   <node pkg="tf2_ros" type="static_transform_publisher"
         name="sim_rgb_camera"      args="0 0 0 0 0 0 /camera /Quadrotor/RGBCameraLeft " />
