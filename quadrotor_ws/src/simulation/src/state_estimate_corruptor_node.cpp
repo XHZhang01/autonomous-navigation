@@ -148,10 +148,6 @@ class StateEstimateCorruptorNode {
 		corrupted_state.header.frame_id = "world";
 		corrupted_state.child_frame_id = "body_foot";
 
-		
-		
-
-
         corrupted_state.twist.twist = corrupt_twist.twist;
         corrupted_state.twist.twist.linear.z = 0;
 

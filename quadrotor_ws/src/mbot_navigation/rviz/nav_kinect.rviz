@@ -123,11 +123,11 @@ Visualization Manager:
       Value: false
     - Alpha: 0.699999988079071
       Class: rviz/Map
-      Color Scheme: map
+      Color Scheme: costmap
       Draw Behind: true
       Enabled: true
       Name: Map
-      Topic: /move_base/local_costmap/costmap
+      Topic: /move_base/global_costmap/costmap
       Unreliable: false
       Use Timestamp: false
       Value: true
@@ -320,8 +320,6 @@ Visualization Manager:
           Value: true
         Quadrotor/Sensors/DepthCamera:
           Value: true
-        Quadrotor/TrueState:
-          Value: true
         av-desired:
           Value: true
         body:
@@ -395,7 +393,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 163.29315185546875
+      Distance: 166.93080139160156
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -403,17 +401,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: 25.790260314941406
-        Y: -6.766805171966553
-        Z: -17.159029006958008
+        X: 20.65749168395996
+        Y: -4.670872688293457
+        Z: -17.164020538330078
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.5647963285446167
+      Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
-      Yaw: 3.3635685443878174
+      Yaw: 3.1685681343078613
     Saved: ~
 Window Geometry:
   Displays:
