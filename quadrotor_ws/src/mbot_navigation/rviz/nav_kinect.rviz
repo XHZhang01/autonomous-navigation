@@ -5,6 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Map1
+        - /Global Plan1
         - /LaserScan1
       Splitter Ratio: 0.65234375
     Tree Height: 514
@@ -176,7 +177,7 @@ Visualization Manager:
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /move_base/NavfnROS/plan
+      Topic: /move_base/GlobalPlanner/plan
       Unreliable: false
       Value: true
     - Alpha: 1
