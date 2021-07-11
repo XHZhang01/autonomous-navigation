@@ -2,8 +2,8 @@ local_costmap:
   global_frame: world
   robot_base_frame: body_foot
 
-  update_frequency: 3.0
-  publish_frequency: 3
+  update_frequency: 1
+  publish_frequency: 1
   transform_tolerance: 0.5
 
   static_map: false  
