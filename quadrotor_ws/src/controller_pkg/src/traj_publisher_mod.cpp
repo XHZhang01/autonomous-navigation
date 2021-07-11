@@ -122,9 +122,9 @@ int main(int argc, char **argv)
                 double t_after_goal_reached = t - (time_goal_reached - start).toSec();
               
                 // ROS_INFO("%f",  t_after_goal_reached);
-                if (t_after_goal_reached < 2)
+                if (t_after_goal_reached < 1)
                 {
-                displacement = tf::Vector3(0,0, 5 - t_after_goal_reached *5 / 2);
+                displacement = tf::Vector3(0,0, 5 - t_after_goal_reached *5 / 1);
                 desired_pose.setOrigin(origin+displacement);
                 
                 tf::Quaternion q;
