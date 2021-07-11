@@ -49,7 +49,7 @@
   <include file="$(find mbot_navigation)/launch/move_base_kinect.launch" />
 
   <!-- Sending Goal -->
-  <node name="Goal" pkg="mbot_navigation" type="move_test"/>
+  <node name="goal_pub" pkg="mbot_navigation" type="move_test"/>
 
 
 

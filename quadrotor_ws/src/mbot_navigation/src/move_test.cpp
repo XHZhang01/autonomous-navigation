@@ -2,10 +2,16 @@
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
 #include <cstdlib>
+#include "std_msgs/String.h"
+#include "std_msgs/Bool.h"
+
+#include <sstream>
  
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "move_test");
+  ros::NodeHandle n;
+  ros::Publisher goal_status_pub = n.advertise<std_msgs::Bool>("goal_status", 1);
 
   double x = 100;
   double y = 0;
@@ -49,10 +55,15 @@ int main(int argc, char** argv)
   move_base.waitForResult();
  
   if(move_base.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-    ROS_INFO("Goal succeeded!");
-  else
+  {  ROS_INFO("Goal succeeded!");
+    std_msgs::Bool goalstate;
+    goalstate.data = true;
+    goal_status_pub.publish(goalstate);
+
+  }else
+  {
     ROS_INFO("Goal failed");
- 
+  }
   return 0;
 
 }

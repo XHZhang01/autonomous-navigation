@@ -343,13 +343,6 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        true_body:
-          camera:
-            Quadrotor/RGBCameraLeft:
-              {}
-          depth_camera:
-            Quadrotor/DepthCamera:
-              {}
         world:
           av-desired:
             {}
@@ -358,6 +351,13 @@ Visualization Manager:
               {}
           body_foot:
             {}
+          true_body:
+            camera:
+              Quadrotor/RGBCameraLeft:
+                {}
+            depth_camera:
+              Quadrotor/DepthCamera:
+                {}
       Update Interval: 0
       Value: true
     - Class: rviz/Image

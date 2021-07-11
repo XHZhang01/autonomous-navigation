@@ -1,6 +1,7 @@
 #include <ros/ros.h>
 #include <tf/transform_broadcaster.h>
 #include <std_msgs/String.h>
+#include <std_msgs/Bool.h>
 #include <trajectory_msgs/MultiDOFJointTrajectoryPoint.h>
 #include <sstream>
 #include <iostream>
@@ -14,12 +15,18 @@
 #define TFOUTPUT 1
 
 geometry_msgs::Twist vel_got;
-tf::Vector3 origin(0,0,0);
-double phi = 0;
+bool goal_reached = false;
+ros::Time time_goal_reached;
 
-void cmd_vel(const geometry_msgs::Twist& vel)
+void cmd_vel_get(const geometry_msgs::Twist& vel)
 {
         vel_got = vel;
+
+}
+void goal_status_get(const std_msgs::Bool& goal_status)
+{
+        goal_reached = goal_status.data;
+        time_goal_reached = ros::Time::now();
 
 }
 
@@ -29,7 +36,8 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "traj_publisher");
     ros::NodeHandle n;
     ros::Publisher desired_state_pub = n.advertise<trajectory_msgs::MultiDOFJointTrajectoryPoint>("desired_state", 1);
-    ros::Subscriber cmd_vel_sub = n.subscribe("cmd_vel", 2, cmd_vel);
+    ros::Subscriber cmd_vel_sub = n.subscribe("cmd_vel", 2, cmd_vel_get);
+    ros::Subscriber goal_status_sub = n.subscribe("goal_status", 2, goal_status_get);
     ros::Rate loop_rate(500);
     ros::Time start(ros::Time::now());
     
@@ -39,15 +47,23 @@ int main(int argc, char **argv)
 #endif
 
     int count = 0;
+    tf::Vector3 displacement(0,0,0);
+    double t_before;
+    double delta_t;
+    
+    tf::Vector3 origin(0,0,0);
+    double phi = 0;
+
+    // Quantities to fill in
+    tf::Transform desired_pose(tf::Transform::getIdentity());
     while (ros::ok()) {
         
 
         double t = (ros::Time::now()-start).toSec();
-        double t_before;
-        double delta_t;
+        
+        
 
-        // Quantities to fill in
-        tf::Transform desired_pose(tf::Transform::getIdentity());
+
 
         geometry_msgs::Twist velocity;
         velocity.linear.x = velocity.linear.y = velocity.linear.z = 0;
@@ -56,33 +72,35 @@ int main(int argc, char **argv)
         acceleration.linear.x = acceleration.linear.y = acceleration.linear.z = 0;
         acceleration.angular.x = acceleration.angular.y = acceleration.angular.z = 0;
 
-        tf::Vector3 displacement(0,0,5);
+        
 
-        if (t <= 12)
+        if (t <= 4)
         {
-                // Static Pose
+            //take off
                 
+                displacement = tf::Vector3(0,0,t*5/4);
                 desired_pose.setOrigin(origin+displacement);
                 
                 tf::Quaternion q;
-                q.setRPY(0,0,phi-t*PI/6);
-                // count++;
-                // std::cout<<"Desired Orientation" << count << std::endl;
+                // q.setRPY(0,0,phi-t*PI/4);
+                q.setRPY(0,0,0);
+
                 desired_pose.setRotation(q);
                 
                 // ROS_INFO("%f", t );
                 
 
-        }else
+        }else if(!goal_reached)
         {
-
-                // cmd_vel
-                // ROS_INFO("Controled by /cmd_vel", t );
+            // flying towards goal
+            // controlled by move_base through '/cmd_vel'
                 
-                delta_t = t_before - t;
+                
+                delta_t = t_before -t;
+                t_before = t;
                 phi = phi + delta_t * vel_got.angular.z ;
                 origin = origin +  delta_t * tf::Vector3(
-                        -vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi), vel_got.linear.x * sin(phi)- vel_got.linear.y* cos(phi), 0);
+                        - vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi),  vel_got.linear.x * sin(phi) - vel_got.linear.y* cos(phi), 0);
 
                
                 desired_pose.setOrigin(origin+displacement);
@@ -98,6 +116,26 @@ int main(int argc, char **argv)
 
 
 
+        } else if (goal_reached)
+        {
+            // landing
+                double t_after_goal_reached = t - (time_goal_reached - start).toSec();
+              
+                // ROS_INFO("%f",  t_after_goal_reached);
+                if (t_after_goal_reached < 2)
+                {
+                displacement = tf::Vector3(0,0, 5 - t_after_goal_reached *5 / 2);
+                desired_pose.setOrigin(origin+displacement);
+                
+                tf::Quaternion q;
+                q.setRPY(0,0,-phi);
+                desired_pose.setRotation(q);
+                } else
+                {
+                   ROS_INFO("Mission succeed! Time Elapsed: %f s", t); 
+                return 0;
+                }
+                
         }
 
 
@@ -138,7 +176,7 @@ int main(int argc, char **argv)
 
         loop_rate.sleep();
         // ++count;
-        t_before = t;
+        
     }
 
 
