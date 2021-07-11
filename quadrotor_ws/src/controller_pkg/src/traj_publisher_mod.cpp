@@ -18,6 +18,7 @@ geometry_msgs::Twist vel_got;
 bool goal_reached = false;
 ros::Time time_goal_reached;
 
+
 void cmd_vel_get(const geometry_msgs::Twist& vel)
 {
         vel_got = vel;
@@ -27,7 +28,7 @@ void goal_status_get(const std_msgs::Bool& goal_status)
 {
         goal_reached = goal_status.data;
         time_goal_reached = ros::Time::now();
-
+        
 }
 
 
@@ -54,8 +55,14 @@ int main(int argc, char **argv)
     tf::Vector3 origin(0,0,0);
     double phi = 0;
 
+    bool ros_info_move_sent = false;
+    
+
     // Quantities to fill in
     tf::Transform desired_pose(tf::Transform::getIdentity());
+
+    ROS_INFO("Start to take off! Time Elapsed: %f s", (ros::Time::now()-start).toSec()); 
+
     while (ros::ok()) {
         
 
@@ -92,9 +99,14 @@ int main(int argc, char **argv)
 
         }else if(!goal_reached)
         {
+
             // flying towards goal
             // controlled by move_base through '/cmd_vel'
-                
+                if (!ros_info_move_sent)
+                {
+                ROS_INFO("Moving towards goal! Time Elapsed: %f s", (ros::Time::now()-start).toSec()); 
+                ros_info_move_sent = true;
+                }
                 
                 delta_t = t_before -t;
                 t_before = t;
