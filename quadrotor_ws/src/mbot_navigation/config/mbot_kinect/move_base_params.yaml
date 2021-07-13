@@ -1,5 +1,5 @@
 shutdown_costmaps: false
-controller_frequency: 4
+controller_frequency: 3
 planner_patience: 15
 controller_patience: 20
 conservative_reset_dist: 3.0
