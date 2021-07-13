@@ -110,15 +110,16 @@ int main(int argc, char **argv)
                 
                 delta_t = t - t_before;
                 t_before = t;
+                
                 phi = phi + delta_t * vel_got.angular.z ;
 
-                velocity.linear.x = vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi);
-                velocity.linear.y = vel_got.linear.x * sin(phi) + vel_got.linear.y* cos(phi);
-
                 origin = origin +  delta_t * tf::Vector3(
-                         velocity.linear.x,  velocity.linear.y, 0);
+                         vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi), vel_got.linear.x * sin(phi) + vel_got.linear.y * cos(phi), 0);
 
                
+                // velocity.linear.x = vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi);
+                // velocity.linear.y = vel_got.linear.x * sin(phi) + vel_got.linear.y * cos(phi);
+
                 desired_pose.setOrigin(origin+displacement);
                                 
                 tf::Quaternion q;
