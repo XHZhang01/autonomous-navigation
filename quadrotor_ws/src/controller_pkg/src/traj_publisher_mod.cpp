@@ -49,7 +49,7 @@ int main(int argc, char **argv)
 
     int count = 0;
     tf::Vector3 displacement(0,0,0);
-    double t_before;
+    double t_before = 0;
     double delta_t;
     
     tf::Vector3 origin(0,0,0);
@@ -93,7 +93,7 @@ int main(int argc, char **argv)
                 q.setRPY(0,0,0);
 
                 desired_pose.setRotation(q);
-                
+                t_before = t;
                 // ROS_INFO("%f", t );
                 
 
@@ -108,17 +108,17 @@ int main(int argc, char **argv)
                 ros_info_move_sent = true;
                 }
                 
-                delta_t = t_before -t;
+                delta_t = t - t_before;
                 t_before = t;
                 phi = phi + delta_t * vel_got.angular.z ;
                 origin = origin +  delta_t * tf::Vector3(
-                        - vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi),  vel_got.linear.x * sin(phi) - vel_got.linear.y* cos(phi), 0);
+                         vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi),  vel_got.linear.x * sin(phi) + vel_got.linear.y* cos(phi), 0);
 
                
                 desired_pose.setOrigin(origin+displacement);
                                 
                 tf::Quaternion q;
-                q.setRPY(0,0,-phi);
+                q.setRPY(0,0,phi);
                 // count++;
                 // std::cout<<"Desired Orientation" << count << std::endl;
                 desired_pose.setRotation(q);
@@ -140,7 +140,7 @@ int main(int argc, char **argv)
                 desired_pose.setOrigin(origin+displacement);
                 
                 tf::Quaternion q;
-                q.setRPY(0,0,-phi);
+                q.setRPY(0,0,phi);
                 desired_pose.setRotation(q);
                 } else
                 {
