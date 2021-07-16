@@ -1,0 +1,12 @@
+<launch>
+
+  <!-- run traj_publisher -->
+  <!-- <node type="traj_publisher" name="traj_publisher" pkg="controller_pkg"/> -->
+  <node type="traj_publisher_mod" name="traj_publisher" pkg="controller_pkg" output="screen"/>
+  
+
+  <!-- Sending Goal -->
+  <node name="goal_pub" pkg="mbot_navigation" type="move_test"/>
+
+
+</launch>
