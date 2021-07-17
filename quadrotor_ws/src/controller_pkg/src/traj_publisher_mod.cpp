@@ -81,11 +81,11 @@ int main(int argc, char **argv)
 
         
 
-        if (t <= 4)
+        if (t <= 2)
         {
             //take off
                 
-                displacement = tf::Vector3(0,0,t*5/4);
+                displacement = tf::Vector3(0,0,t*5/2);
                 desired_pose.setOrigin(origin+displacement);
                 
                 tf::Quaternion q;

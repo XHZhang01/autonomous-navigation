@@ -11,17 +11,6 @@
   </node>
 
 
-  <!-- 运行depthimage_to_laserscan节点，将点云深度数转换成激光数据 -->
-
-  <!-- <node pkg="nodelet" type="nodelet" name="nodelet2"
-        args="load depthimage_to_laserscan/DepthImageToLaserScanNodelet nodelet_manager">
-      <remap from="image" to="realsense/depth/image" />
-      <remap from="camera_info" to="realsense/depth/camera_info" />
-      <remap from="scan" to="realsense/depth/scan" />
-      <param name="output_frame_id" value="Quadrotor/Sensors/DepthCamera" />
-      <param name="scan_time" value="0.03"/>
-  </node> -->
-
  <!-- run the node pointcloud_to_laserscan，convert pointcloud to Laserscan -->
   <!-- <node pkg="nodelet" type="nodelet" name="nodelet2"
         args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet nodelet_manager">
