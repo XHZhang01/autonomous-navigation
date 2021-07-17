@@ -46,3 +46,11 @@ target_link_libraries(traj_publisher ${catkin_LIBRARIES})
 add_executable(traj_publisher_mod src/traj_publisher_mod.cpp)
 add_dependencies(traj_publisher_mod ${catkin_EXPORTED_TARGETS})
 target_link_libraries(traj_publisher_mod ${catkin_LIBRARIES})
+
+add_executable(traj_pub src/traj_pub.cpp)
+add_dependencies(traj_pub ${catkin_EXPORTED_TARGETS})
+target_link_libraries(traj_pub ${catkin_LIBRARIES})
+
+add_executable(state_machine src/state_machine.cpp)
+add_dependencies(state_machine ${catkin_EXPORTED_TARGETS})
+target_link_libraries(state_machine ${catkin_LIBRARIES})
