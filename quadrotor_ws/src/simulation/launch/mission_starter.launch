@@ -6,7 +6,7 @@
   
 
   <!-- Sending Goal -->
-  <node name="goal_pub" pkg="mbot_navigation" type="move_test"/>
+  <!-- <node name="goal_pub" pkg="mbot_navigation" type="move_test"/> -->
 
 
 </launch>
