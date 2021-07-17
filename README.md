@@ -1,18 +1,18 @@
-#ROS
+# ROS
 
-##安装depth-image-proc
+## 安装depth-image-proc
 sudo apt-get install ros-noetic-depth-image-proc
 
 
-##安装octomap
+## 安装octomap
 sudo apt-get install ros-kinetic-octomap-ros 
 sudo apt-get install ros-kinetic-octomap-msgs
 sudo apt-get install ros-kinetic-octomap-server
 
-##安装pointcloud-to-laserscan
+## 安装pointcloud-to-laserscan
 sudo apt-get install ros-noetic-pointcloud-to-laserscan
 
-##launch
+## launch
 
 roslaunch simulation simulation.launch
 
