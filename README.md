@@ -45,7 +45,10 @@ source devel/setup.bash
 roslaunch simulation simulation.launch
 ```
 **Step 2**. Open the second terminal, open state machine.
-
+```shell script
+source devel/setup.bash
+rosrun simulation state_machine
+```
 
 **Step 3**. Open the third terminal, take off.
 ```shell script
