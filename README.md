@@ -9,10 +9,10 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-# Group Project: Autonomous System
+<!-- /vscode-markdown-toc --># Group Project: Autonomous System
 
 ![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
+
 
 ##  1. <a name='Teammember'></a>Team member
 * Runxin Wang (runxin.wang@tum.de)
