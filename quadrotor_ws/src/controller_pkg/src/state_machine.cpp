@@ -32,14 +32,12 @@ public:
     string execute()
     {
         state="TAKE_OFF";
-        // ros::Rate loop_rate(5);
         while (ros::ok())
         {
             ros::spinOnce();
-            // loop_rate.sleep();
             if (take_off_flag == "succeeded")
             {
-                ROS_INFO("Reached desired height!");
+                ROS_INFO("Reached desired height, waiting for the goal!");
                 take_off_flag = "";
                 return "succeeded";
             }
@@ -80,20 +78,17 @@ public:
     string execute()
     {
         state = "TRAVELING";
-        // ros::Rate loop_rate(5);
         while (ros::ok())
         {
             ros::spinOnce();
-            // loop_rate.sleep();
             if (Traveling_flag == "succeeded")
             {
-                // ROS_INFO("Ready for landing!");
                 Traveling_flag = "";
                 return "succeeded";
             }
             else if (Traveling_flag == "positive" && !traveling) 
             {
-                ROS_INFO("Traveling!");
+                ROS_INFO("Goal received, traveling!");
                 traveling = true;
             }
         }
