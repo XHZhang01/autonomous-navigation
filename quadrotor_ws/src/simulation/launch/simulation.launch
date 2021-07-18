@@ -1,4 +1,7 @@
 <launch>
+  <!-- set to true if you want 3D mapping with octomap -->
+  <arg name="use_octomap" default="false" />
+
   <arg name="load_params" default="true" />
   <arg name="corrupt_state_estimate" default="true" />
   <arg name="right_image_topic" default="/realsense/rgb/right_image_raw" />
@@ -27,8 +30,12 @@
   <include file="$(find simulation)/launch/point_cloud_convert.launch" />
 
   <!-- 3D-Mapping using Octomap-->
-  <!-- <include file="$(find simulation)/launch/octomap_mapping.launch" /> -->
-  
+  <group if="$(arg use_octomap)">
+      <include file="$(find simulation)/launch/octomap_mapping.launch" />
+      <node type="traj_pub" name="traj_publisher" pkg="controller_pkg" output="screen"/>
+
+  </group>
+
   <!-- rviz-->
   <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" /> -->
   <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mbot_navigation)/rviz/nav_kinect.rviz" />
