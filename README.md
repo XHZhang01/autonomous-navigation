@@ -105,5 +105,7 @@ rosrun mbot_teleop mbot_teleop.py # smoother movement trajectory
 ```shell
 rosrun map_server map_saver map:=/projected_map -f PATH_TO_YOUR_FILE/mymap
 ```
-![git_png](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/projected_map_octomap.png)
+
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/projected_map_octomap.png" width = 40% height = 40% />
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/3D_Octomap.png" width = 35% height = 35% />
 
