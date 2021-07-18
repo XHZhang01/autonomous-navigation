@@ -1,12 +1,24 @@
+<!-- vscode-markdown-toc -->
+* 1. [Team member](#Teammember)
+* 2. [Setup](#Setup)
+* 3. [Run](#Run)
+	* 3.1. [Autonomous mode: make the quadrotor autonomously navigate to a target goal](#Autonomousmode:makethequadrotorautonomouslynavigatetoatargetgoal)
+	* 3.2. [Keyboard mode: control the quadrotor with keyboard and map with Octomap](#Keyboardmode:controlthequadrotorwithkeyboardandmapwithOctomap)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
 # Group Project: Autonomous System
 
 ![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
 
-## Team member
+##  1. <a name='Teammember'></a>Team member
 * Runxin Wang (runxin.wang@tum.de)
 * Xiaolaing Li (xiaoliang.li@tum.de)
 
-## Setup
+##  2. <a name='Setup'></a>Setup
 
 1. If not already done so, install [ROS](http://wiki.ros.org/ROS/Installation) (Desktop-Full is recommended).
 
@@ -39,8 +51,8 @@ catkin build
 unzip -d ~/workspace_path/devel/lib/simulation ROS_with_SkyCamera_executable.zip
 ```
 
-## Run
-### Autonomous mode: make the quadrotor autonomously navigate to a target goal
+##  3. <a name='Run'></a>Run
+###  3.1. <a name='Autonomousmode:makethequadrotorautonomouslynavigatetoatargetgoal'></a>Autonomous mode: make the quadrotor autonomously navigate to a target goal
 
 **Step 1**. Open a terminal from your workspace, prepare to take off.
 ```shell
@@ -66,7 +78,7 @@ source devel/setup.bash
 rosrun mbot_navigation move_test 100 0 0
 ```
 
-### Keyboard mode: control the quadrotor with keyboard and map with Octomap
+###  3.2. <a name='Keyboardmode:controlthequadrotorwithkeyboardandmapwithOctomap'></a>Keyboard mode: control the quadrotor with keyboard and map with Octomap
 
 **Step 1**. Open a terminal from your workspace.
 ```shell
