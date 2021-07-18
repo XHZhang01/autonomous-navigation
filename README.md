@@ -62,15 +62,15 @@ source devel/setup.bash
 rosrun mbot_navigation move_test 100 0 0
 ```
 
-### Control the quadrotor with keyboard and map with Octomap.
+### Keyboard mode: Control the quadrotor with keyboard and map with Octomap.
 
-**Step 1**. Open a terminal from your workspace, prepare to take off.
+**Step 1**. Open a terminal from your workspace.
 ```shell script
 source devel/setup.bash
-roslaunch simulation simulation_octomap.launch
+roslaunch simulation simulation.launch use_octomap:=true
 ```
 **Step 2**. Run keyboard control node.
-```shell script
+```shell scrip
 source devel/setup.bash
 rosrun teleop_twist_keyboard_cpp teleop_twist_keyboard # holonomic control
 ```
