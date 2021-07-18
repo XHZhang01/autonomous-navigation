@@ -1,7 +1,6 @@
 # Group Project: Autonomous System
 
-
-
+![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
 
 ## Setup
 
@@ -47,7 +46,7 @@ roslaunch simulation simulation.launch
 **Step 2**. Open the second terminal, open state machine.
 ```shell script
 source devel/setup.bash
-rosrun simulation state_machine
+rosrun controller_pkg state_machine 
 ```
 
 **Step 3**. Open the third terminal, take off.
