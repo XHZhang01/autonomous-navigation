@@ -1,3 +1,8 @@
+# Group Project: Autonomous System
+
+
+![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
+
 <!-- vscode-markdown-toc -->
 * 1. [Team member](#Teammember)
 * 2. [Setup](#Setup)
@@ -9,9 +14,7 @@
 	numbering=true
 	autoSave=true
 	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc --># Group Project: Autonomous System
-
-![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
+<!-- /vscode-markdown-toc -->
 
 
 ##  1. <a name='Teammember'></a>Team member
@@ -20,18 +23,18 @@
 
 ##  2. <a name='Setup'></a>Setup
 
-1. If not already done so, install [ROS](http://wiki.ros.org/ROS/Installation) (Desktop-Full is recommended).
+**Step 1**. If not already done so, install [ROS](http://wiki.ros.org/ROS/Installation) (Desktop-Full is recommended).
 
-2. Download the Unity executable files "ROS_with_SkyCamera.zip". 
+**Step 2**. Download the Unity executable files "ROS_with_SkyCamera.zip". 
     >Link:  https://syncandshare.lrz.de/getlink/fi4C8XwwgNP3gtPScV2b48pW/
     
-3. Install [depth-image-proc](http://wiki.ros.org/depth_image_proc).
+**Step 3**. Install [depth-image-proc](http://wiki.ros.org/depth_image_proc).
 ```shell
 sudo apt-get install ros-melodic-depth-image-proc  # exchange melodic for your ros distro if necessary
 ```
 
 
-4. Install [Octomap](http://wiki.ros.org/octomap).
+**Step 4**. Install [Octomap](http://wiki.ros.org/octomap).
 ```shell
 sudo apt-get install ros-melodic-octomap-ros # exchange melodic for your ros distro if necessary
 sudo apt-get install ros-melodic-octomap-msgs
@@ -39,13 +42,13 @@ sudo apt-get install ros-melodic-octomap-server
 sudo apt-get install ros-melodic-octomap-rviz-plugins 
 ```
 
-5. Create a workspace and clone the [repository](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor), then build the workspace. 
+**Step 5**. Create a workspace and clone the [repository](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor), then build the workspace. 
 ```shell
 # cd ~/workspace_path
 git clone https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor.git
 catkin build
 ```
-6. Unzip the Unity executable files to **/devel/lib/simulation**
+**Step 6**. Unzip the Unity executable files to **/devel/lib/simulation**
 ```shell
 # cd ~/Unity_executable_files_path
 unzip -d ~/workspace_path/devel/lib/simulation ROS_with_SkyCamera_executable.zip
