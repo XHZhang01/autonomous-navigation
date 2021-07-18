@@ -11,6 +11,7 @@ int main(int argc, char** argv)
 {
   ros::init(argc, argv, "move_test");
   ros::NodeHandle n;
+  ros::Publisher goal_sent_pub = n.advertise<std_msgs::Bool>("goal_sent", 1);
   ros::Publisher goal_status_pub = n.advertise<std_msgs::Bool>("goal_status", 1);
 
   double x = 100;
@@ -51,14 +52,20 @@ int main(int argc, char** argv)
  
   ROS_INFO("Sending goal");
   move_base.sendGoal(goal);
- 
+  std_msgs::Bool flag;
+  flag.data = true;
+  goal_sent_pub.publish(flag);
+
   move_base.waitForResult();
  
   if(move_base.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
-  {  ROS_INFO("Goal succeeded!");
+  {  
+    ROS_INFO("Goal succeeded!");
     std_msgs::Bool goalstate;
     goalstate.data = true;
     goal_status_pub.publish(goalstate);
+
+
 
   }else
   {
