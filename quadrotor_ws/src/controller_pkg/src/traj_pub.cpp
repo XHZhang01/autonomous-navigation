@@ -131,7 +131,7 @@ int main(int argc, char **argv)
             phi = phi + delta_t * vel_got.angular.z ;
 
             origin = origin +  delta_t * tf::Vector3(
-                        vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi), vel_got.linear.x * sin(phi) + vel_got.linear.y * cos(phi), 0);
+                        vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi), vel_got.linear.x * sin(phi) + vel_got.linear.y * cos(phi), vel_got.linear.z);
 
             
             // velocity.linear.x = vel_got.linear.x * cos(phi) - vel_got.linear.y * sin(phi);
