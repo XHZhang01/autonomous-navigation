@@ -10,7 +10,7 @@ bool traveling = false;
 bool landing = false;
 bool idling = false;
 
-ros::Time time_goal_reached;
+ros::Time time_goal_received;
 
 class TakeOff
 {
@@ -40,8 +40,7 @@ public:
             if (take_off_flag == "succeeded")
             {
                 ROS_INFO("Reached desired height, waiting for the goal!");
-                take_off_flag = "";
-                time_goal_reached = ros::Time::now();    
+                take_off_flag = "";   
                 return "succeeded";
             }
             else if (take_off_flag == "positive" && !taking_off)
@@ -91,6 +90,7 @@ public:
             }
             else if (Traveling_flag == "positive" && !traveling) 
             {
+                time_goal_received = ros::Time::now(); 
                 ROS_INFO("Goal received, traveling!");
                 traveling = true;
             }
@@ -126,13 +126,12 @@ public:
             ros::spinOnce();
             if (Landing_flag == "succeeded")
             {
-                ROS_INFO("Mission succeeded!");
-                Landing_flag = "";
+                ROS_INFO("Mission succeeded! Elapsed time: %fs", (ros::Time::now() - time_goal_received).toSec());
+                Landing_flag = ""; 
                 return "succeeded";
             }
             else if (Landing_flag == "positive" && !landing)
             {
-                ROS_INFO("Time Elapsed for the 2D-Navigation: %f s", (ros::Time::now() - time_goal_reached).toSec()); 
                 ROS_INFO("Landing!");
                 landing = true;
             }
