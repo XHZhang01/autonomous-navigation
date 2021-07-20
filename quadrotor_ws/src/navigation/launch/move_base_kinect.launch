@@ -8,13 +8,13 @@
     
     <param name="navfn/allow_unknown" value="true"/>
 
-    <rosparam file="$(find navigation)/config/mbot_kinect/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find navigation)/config/mbot_kinect/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find navigation)/config/mbot_kinect/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find navigation)/config/mbot_kinect/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/config/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find navigation)/config/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find navigation)/config/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/config/global_costmap_params.yaml" command="load" />
 
-    <rosparam file="$(find navigation)/config/mbot_kinect/move_base_params.yaml" command="load" />
-    <rosparam file="$(find navigation)/config/mbot_kinect/dwa_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find navigation)/config/dwa_local_planner_params.yaml" command="load" />
 
     <remap from="/map" to="/projected_map" />
     <remap from="/odom" to="/current_state_est_foot" />
