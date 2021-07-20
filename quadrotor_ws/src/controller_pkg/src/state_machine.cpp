@@ -1,7 +1,7 @@
 #include <ros/ros.h>
 #include <std_msgs/String.h>
 #include "std_msgs/String.h"
-using  std::__cxx11::string;
+using  std::string;
 
 string state;
 bool ready = false;
@@ -9,6 +9,8 @@ bool taking_off = false;
 bool traveling = false;
 bool landing = false;
 bool idling = false;
+
+ros::Time time_goal_reached;
 
 class TakeOff
 {
@@ -39,6 +41,7 @@ public:
             {
                 ROS_INFO("Reached desired height, waiting for the goal!");
                 take_off_flag = "";
+                time_goal_reached = ros::Time::now();    
                 return "succeeded";
             }
             else if (take_off_flag == "positive" && !taking_off)
@@ -118,11 +121,9 @@ public:
     string execute()
     {
         state = "LANDING";
-        // ros::Rate loop_rate(5);
         while (ros::ok())
         {
             ros::spinOnce();
-            // loop_rate.sleep();
             if (Landing_flag == "succeeded")
             {
                 ROS_INFO("Mission succeeded!");
@@ -131,6 +132,7 @@ public:
             }
             else if (Landing_flag == "positive" && !landing)
             {
+                ROS_INFO("Time Elapsed for the 2D-Navigation: %f s", (ros::Time::now() - time_goal_reached).toSec()); 
                 ROS_INFO("Landing!");
                 landing = true;
             }
@@ -161,11 +163,9 @@ public:
     string execute()
     {
         state="IDLE";
-        // ros::Rate loop_rate(5);
         while (ros::ok())
         {
             ros::spinOnce();
-            // loop_rate.sleep();
             if (idle_flag == "goal received")
             {
                 ROS_INFO("Goal received!");
@@ -177,7 +177,6 @@ public:
                 ROS_INFO("Idling!");
                 idling = true;
             }
-            
         }
         return "";
     } 
@@ -225,9 +224,6 @@ void work(const ros::NodeHandle &n)
 
 int main(int argc, char **argv)
 {
-    // signal(SIGINT, exit);
-    // signal(SIGTERM, exit);  
-
     ros::init(argc, argv, "state_machine");  
     ros::NodeHandle n;
 

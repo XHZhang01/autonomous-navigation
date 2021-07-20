@@ -78,7 +78,7 @@ roslaunch simulation mission_starter.launch
 
 ```shell
 source devel/setup.bash
-rosrun mbot_navigation move_test 100 0 0
+rosrun navigation send_goal 100 0 0
 ```
 
 ###  3.2. <a name='Keyboardmode:controlthequadrotorwithkeyboardandmapwithOctomap'></a>Keyboard mode: control the quadrotor with keyboard and map with Octomap
@@ -97,7 +97,7 @@ or
 
 ```shell
 source devel/setup.bash
-rosrun mbot_teleop mbot_teleop.py # smoother movement trajectory
+rosrun teleop teleop.py # smoother movement trajectory
 ```
 **Step 3**. Use the keyboard to control the quadrotor to complete the mapping
 

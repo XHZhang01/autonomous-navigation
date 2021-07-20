@@ -38,7 +38,7 @@
 
   <!-- rviz-->
   <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(find simulation)/rviz/rviz2.rviz" /> -->
-  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mbot_navigation)/rviz/nav_kinect.rviz" />
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find navigation)/rviz/nav_kinect.rviz" />
 
   <!-- run controller -->
   <node type="controller_node" name="controller_node" pkg="controller_pkg"/>
@@ -48,7 +48,7 @@
         name="octomap_reset_client"   output="screen"   args="5" /> -->
 
   <!-- 运行move_base节点 -->
-  <include file="$(find mbot_navigation)/launch/move_base_kinect.launch" />
+  <include file="$(find navigation)/launch/move_base_kinect.launch" />
 
 
   <node name="Simulation" pkg="simulation" type="Linux_build.x86_64"/>
