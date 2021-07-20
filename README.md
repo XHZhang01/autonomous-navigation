@@ -19,7 +19,7 @@
 
 ##  1. <a name='Teammember'></a>Team member
 * Runxin Wang (runxin.wang@tum.de)
-* Xiaolaing Li (xiaoliang.li@tum.de)
+* Xiaoliang Li (xiaoliang.li@tum.de)
 
 ##  2. <a name='Setup'></a>Setup
 
