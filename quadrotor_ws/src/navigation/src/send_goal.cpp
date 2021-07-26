@@ -17,10 +17,10 @@ int main(int argc, char** argv)
   double y = 0;
   double z = 0;
  
-  //订阅move_base服务器的消息  
+  //set Action to connect with move_base  
   actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> move_base("move_base", true);
  
-  //等待连接服务器，5s等待时间限制 
+  //Waiting to connect to the server, 5s waiting time limit
   while(!move_base.waitForServer(ros::Duration(5.0))){
     ROS_INFO("Waiting for move_base action server...");
   }
@@ -36,9 +36,7 @@ int main(int argc, char** argv)
       z = atof(argv[3]);
    }
 
-
-
-  //设定目标点
+  //set goal
   move_base_msgs::MoveBaseGoal goal;
   goal.target_pose.header.frame_id = "world";
   goal.target_pose.header.stamp = ros::Time::now();

@@ -128,7 +128,6 @@ class StateEstimateCorruptorNode {
 
 	void PublishCorruptedState(geometry_msgs::TwistStamped const& corrupt_twist) {
         nav_msgs::Odometry corrupted_state;
-        //corrupted_state.pose = corrupt_pose;
 
         corrupted_state.header.stamp = corrupt_twist.header.stamp;
 		corrupted_state.header.frame_id = "world";
@@ -142,7 +141,6 @@ class StateEstimateCorruptorNode {
 	
 	void PublishCorruptedState_Foot(geometry_msgs::TwistStamped const& corrupt_twist) {
         nav_msgs::Odometry corrupted_state;
-        //corrupted_state.pose = corrupt_pose;
 
         corrupted_state.header.stamp = corrupt_twist.header.stamp;
 		corrupted_state.header.frame_id = "world";
@@ -198,8 +196,8 @@ class StateEstimateCorruptorNode {
 		tf::Quaternion quat;
         tf::quaternionMsgToTF(pose.pose.orientation, quat);
 
-	    double roll, pitch, yaw;//定义存储roll,pitch and yaw的容器
-        tf::Matrix3x3(quat).getRPY(roll, pitch, yaw); //进行转换
+	    double roll, pitch, yaw; // define roll, pitch, yaw
+        tf::Matrix3x3(quat).getRPY(roll, pitch, yaw); 
 		
 		geometry_msgs::Quaternion q;
 		q = tf::createQuaternionMsgFromRollPitchYaw(0,0,yaw);

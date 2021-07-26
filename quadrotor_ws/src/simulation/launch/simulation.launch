@@ -15,7 +15,6 @@
   <!-- <param name="use_sim_time" value="true"/> -->
   <!-- <node name="time_server" pkg="simulation" type="time_server"/> -->
 
-
   <include file="$(find simulation)/launch/unity_ros.launch" >
     <arg name="load_params" value="$(arg load_params)" />
     <arg name="right_image_topic" value="$(arg right_image_topic)" />
@@ -26,10 +25,10 @@
     <arg name="depth_info_topic" value="$(arg depth_info_topic)" />
   </include>
   
-  <!-- convert the Depthimage to Pointcloud and laserscann-->
+  <!-- convert the Depthimage to Pointcloud -->
   <include file="$(find simulation)/launch/point_cloud_convert.launch" />
 
-  <!-- 3D-Mapping using Octomap-->
+  <!-- 3D-Mapping using Octomap (optional)-->
   <group if="$(arg use_octomap)">
       <include file="$(find simulation)/launch/octomap_mapping.launch" />
       <node type="traj_pub" name="traj_publisher" pkg="controller_pkg" output="screen"/>
@@ -47,9 +46,8 @@
   <!-- <node pkg="simulation" type="octomap_reset_client"
         name="octomap_reset_client"   output="screen"   args="5" /> -->
 
-  <!-- 运行move_base节点 -->
+  <!-- bring up move_base -->
   <include file="$(find navigation)/launch/move_base_kinect.launch" />
-
 
   <node name="Simulation" pkg="simulation" type="Linux_build.x86_64"/>
 
@@ -74,7 +72,6 @@
   <node name="w_to_unity" pkg="simulation" type="w_to_unity"/>
 
 
-
   <!-- <node pkg="tf2_ros" type="static_transform_publisher"
         name="sim_true_body"      args="0 0 0 0 0 0 /world /Quadrotor/TrueState " /> -->
 
@@ -97,8 +94,4 @@
   <node pkg="tf2_ros" type="static_transform_publisher"
         name="depth_camera_frame_to_body"      args="0 0 0 -1.571 0 -1.571 /body /Quadrotor/Sensors/DepthCamera" />
  
-
-
-
-
 </launch>

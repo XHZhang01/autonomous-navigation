@@ -10,7 +10,6 @@
     <remap from="points" to="/realsense/depth/pointcloud"/>
   </node>
 
-
  <!-- run the node pointcloud_to_laserscan，convert pointcloud to Laserscan -->
   <!-- <node pkg="nodelet" type="nodelet" name="nodelet2"
         args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet nodelet_manager">
@@ -18,6 +17,5 @@
       <remap from="scan" to="/realsense/depth/scan" />
       <param name="target_frame" value="body" />
   </node> -->
-
 
 </launch>
