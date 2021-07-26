@@ -37,7 +37,7 @@
 ###  3.1. <a name='construction-of-the-overall-architecture-(xiaoliang-and-runxin)'></a>Construction of the overall architecture (Xiaoliang and Runxin)
 > **simulation/launch/simulation.launch**
 >>**simulation/launch/move_base_kinect.launch**
->>**simulation/launch/octomap_mapping.launch**
+>>**simulation/launch/octomap_mapping.launch(optional)**
 >>**simulation/launch/point_cloud_convert.launch**
 >>**navigation/rviz/nav_kinect.rviz**
 >>**tf2/static_transform_publisher * 6**
@@ -106,10 +106,10 @@ The "teleop" package is cloned from https://github.com/guyuehome/ros_basic_tutor
 
 The "teleop_twist_keyboard_cpp" package is cloned from https://github.com/methylDragon/teleop_twist_keyboard_cpp. This package can control the quadrotor omnidirectionally.
 
-###  3.7. <a name='reset-the-frame-"/quadrotor/sensors/depthcamera"-(runxin)'></a>Reset the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)
+###  3.7. <a name='reset-the-frame-"/quadrotor/sensors/depthcamera"-(runxin)'></a>Change the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)
 > simulation/launch/simulation.launch
 
-The parent frame of "/Quadrotor/Sensors/DepthCamera" was set to "/true_body", which is impossible in the real sense. So we reset its parent frame to corruped frame "/body" and updated the relative pose between them.
+The parent frame of "/Quadrotor/Sensors/DepthCamera" was set to "/true_body", which is impossible in the real sense. So we changed its parent frame to corruped frame "/body" and updated the relative pose between them.
 ```XML
 <!-- change the parent frame from '/true_body' to 'body' -->
   <node pkg="tf2_ros" type="static_transform_publisher"
@@ -117,6 +117,8 @@ The parent frame of "/Quadrotor/Sensors/DepthCamera" was set to "/true_body", wh
 	args="0 0 0 -1.571 0 -1.571 /body /Quadrotor/Sensors/DepthCamera" />
 
 ```
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/tf_frames.png" width = 100% height = 100% />
+
 ###  3.8. <a name='add-frame-"body_foot"-(runxin)'></a>Add frame "body_foot" (Runxin)
 >simulation/src/state_estimate_corruptor_node
 
@@ -179,6 +181,8 @@ We can also get a 2D projected map from the 3D octomap. In theory, the projected
 
 In order to better observe the relative position of the quadrotor and the building, I changed the unity environment and added a skycamera which accompanies the quadrotor. Both the executable files and the modified unity environment can be dowanloaded from the following link:
 https://syncandshare.lrz.de/getlink/fi4C8XwwgNP3gtPScV2b48pW/
+
+![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
 
 ##  4. <a name='unfinished-task'></a>Unfinished task
 
