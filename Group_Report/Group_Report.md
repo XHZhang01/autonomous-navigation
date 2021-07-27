@@ -30,7 +30,21 @@
 * Runxin Wang (runxin.wang@tum.de)
 * Xiaoliang Li (xiaoliang.li@tum.de)
 
-##  2. <a name='-architecture-and-result'></a> Architecture and result
+##  2. <a name='-architecture-and-result'></a> Architecture
+We tried firstly to use octomap to build the voxel-grid representation of the enviroment and used the projected map as the basis for the 2D-navigation. However, the size of the projected map can not be manually adjusted so that the navigation did not work directly, if we set the goal location outside of the map. As a result, we decided to only use the package "move_base", which is capable of building maps and planning for 2D-navigation in real time.
+
+An illustration of move_base from ROS wiki is shown below. 
+
+
+Essential configuration options for move_base in our project:
+* sensor source: we converted the depth image from the depth camera into the point cloud.
+* sensor transforms: frame relation between the depth camera frame and the world frame.
+* odometry source: based on the ground-projected frame "body_foot" from the frame "body" of the quadrotor.
+
+The global planner generates the global path based on the goal location and the global costmap. The local planner publishes the velocity commands, which be subscribed by the node traj_publisher, as can be seen in the following illustration.
+
+
+The node traj_publisher will integrate the velocity commands into the desired state. Furthermore, the node traj_publisher will publish signal flags to the node state_machine so that the states "take off", "traveling" and "landing"can be switched and displayed. In addition, the node controller_node will use the desired state and the corrupted current state to generate the rotor speed commands, which will be sent to unity to update the simulation environment. 
 
 ##  3. <a name='-important-commits'></a> Important commits 
 
@@ -68,7 +82,7 @@ We modified this file so that the trajektory_publisher node can switch different
 ###  3.3. <a name='state-machine-(xiaoliang)'></a>State machine (Xiaoliang)
 > controller_pkg/src/state_machine.cpp    
 
-balabala
+This ROS node is responsible for showing the current state of the quadrotor. For this purpose, subscribers are generated for receiving the state-changing information from the corresponding publishers in the ROS node "traj_pub.cpp" in terms of "take off", "traveling" and "landing".
 
 ###  3.4. <a name='goal-sender-(runxin)'></a>Goal sender (Runxin)
 > navigation/src/send_goal.cpp
