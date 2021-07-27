@@ -1,7 +1,7 @@
 # Group Project: Autonomous System
 
 
-![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
+![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/quadrotor_test1.gif)
 
 <!-- vscode-markdown-toc -->
 * 1. [Team member](#team-member)
@@ -106,6 +106,6 @@ rosrun teleop teleop.py # smoother movement trajectory
 rosrun map_server map_saver map:=/projected_map -f PATH_TO_YOUR_FILE/mymap
 ```
 
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/projected_map_octomap.png" width = 40% height = 40% />
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/3D_Octomap.png" width = 35% height = 35% />
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/projected_map_octomap.png" width = 40% height = 40% />
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/3D_Octomap.png" width = 35% height = 35% />
 
