@@ -2,20 +2,20 @@
 
 <!-- vscode-markdown-toc -->
 * 1. [Team member](#team-member)
-* 2. [ Architecture and result](#-architecture-and-result)
+* 2. [ Architecture](#-architecture)
 * 3. [ Important commits](#-important-commits)
-    * 3.1. [Construction of the overall architecture (Xiaoliang and Runxin)](#construction-of-the-overall-architecture-(xiaoliang-and-runxin))
-    * 3.2. [Trajektory publisher (Xiaoliang and Runxin)](#trajektory-publisher-(xiaoliang-and-runxin))
-    * 3.3. [State machine (Xiaoliang)](#state-machine-(xiaoliang))
-    * 3.4. [Goal sender (Runxin)](#goal-sender-(runxin))
-    * 3.5. [Use ros-time (Runxin)](#use-ros-time-(runxin))
-    * 3.6. [Add keyboard control packages (Runxin)](#add-keyboard-control-packages-(runxin))
-    * 3.7. [Reset the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)](#reset-the-frame-"/quadrotor/sensors/depthcamera"-(runxin))
-    * 3.8. [Add frame "body_foot" (Runxin)](#add-frame-"body_foot"-(runxin))
-    * 3.9. [Convert the depth image (Runxin)](#convert-the-depth-image-(runxin))
-    * 3.10. [Move_base and the optimization of parameters (Xiaoliang and Runxin)](#move_base-and-the-optimization-of-parameters-(xiaoliang-and-runxin))
-    * 3.11. [Setup Octomap (Runxin)](#setup-octomap-(runxin))
-    * 3.12. [Add a skycamera in the Unity environment (Runxin)](#add-a-skycamera-in-the-unity-environment-(runxin))
+  * 3.1. [Construction of the overall architecture (Xiaoliang and Runxin)](#construction-of-the-overall-architecture-(xiaoliang-and-runxin))
+  * 3.2. [Trajektory publisher (Xiaoliang and Runxin)](#trajektory-publisher-(xiaoliang-and-runxin))
+  * 3.3. [State machine (Xiaoliang)](#state-machine-(xiaoliang))
+  * 3.4. [Goal sender (Runxin)](#goal-sender-(runxin))
+  * 3.5. [Use ros-time (Runxin)](#use-ros-time-(runxin))
+  * 3.6. [Add keyboard control packages (Runxin)](#add-keyboard-control-packages-(runxin))
+  * 3.7. [Change the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)](#change-the-frame-"/quadrotor/sensors/depthcamera"-(runxin))
+  * 3.8. [Add frame "body_foot" (Runxin)](#add-frame-"body_foot"-(runxin))
+  * 3.9. [Convert the depth image (Runxin)](#convert-the-depth-image-(runxin))
+  * 3.10. [Move_base and the optimization of parameters (Xiaoliang and Runxin)](#move_base-and-the-optimization-of-parameters-(xiaoliang-and-runxin))
+  * 3.11. [Setup Octomap (Runxin)](#setup-octomap-(runxin))
+  * 3.12. [Add a skycamera in the Unity environment (Runxin)](#add-a-skycamera-in-the-unity-environment-(runxin))
 * 4. [Unfinished task](#unfinished-task)
 * 5. [External code](#external-code)
 
@@ -30,7 +30,7 @@
 * Runxin Wang (runxin.wang@tum.de)
 * Xiaoliang Li (xiaoliang.li@tum.de)
 
-##  2. <a name='-architecture-and-result'></a> Architecture
+##  2. <a name='-architecture'></a> Architecture
 We tried firstly to use octomap to build the voxel-grid representation of the enviroment and used the projected map as the basis for the 2D-navigation. However, the size of the projected map can not be manually adjusted so that the navigation did not work directly, if we set the goal location outside of the map. As a result, we decided to only use the package "move_base", which is capable of building maps and planning for 2D-navigation in real time.
 
 An illustration of move_base from ROS wiki is shown below. 
@@ -122,7 +122,7 @@ The "teleop" package is cloned from https://github.com/guyuehome/ros_basic_tutor
 
 The "teleop_twist_keyboard_cpp" package is cloned from https://github.com/methylDragon/teleop_twist_keyboard_cpp. This package can control the quadrotor omnidirectionally.
 
-###  3.7. <a name='reset-the-frame-"/quadrotor/sensors/depthcamera"-(runxin)'></a>Change the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)
+###  3.7. <a name='change-the-frame-"/quadrotor/sensors/depthcamera"-(runxin)'></a>Change the frame "/Quadrotor/Sensors/DepthCamera" (Runxin)
 > simulation/launch/simulation.launch
 
 The parent frame of "/Quadrotor/Sensors/DepthCamera" was set to "/true_body", which is impossible in the real sense. So we changed its parent frame to corruped frame "/body" and updated the relative pose between them.
