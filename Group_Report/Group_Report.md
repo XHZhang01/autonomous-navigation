@@ -35,6 +35,7 @@ We tried firstly to use octomap to build the voxel-grid representation of the en
 
 An illustration of move_base from ROS wiki is shown below. 
 
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/move_base_wiki.jpg" width = 80% height = 80% />
 
 Essential configuration options for move_base in our project:
 * sensor source: we converted the depth image from the depth camera into the point cloud.
@@ -43,6 +44,7 @@ Essential configuration options for move_base in our project:
 
 The global planner generates the global path based on the goal location and the global costmap. The local planner publishes the velocity commands, which be subscribed by the node traj_publisher, as can be seen in the following illustration.
 
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/project_flow.jpg" width = 70% height = 70% />
 
 The node traj_publisher will integrate the velocity commands into the desired state. Furthermore, the node traj_publisher will publish signal flags to the node state_machine so that the states "take off", "traveling" and "landing"can be switched and displayed. In addition, the node controller_node will use the desired state and the corrupted current state to generate the rotor speed commands, which will be sent to unity to update the simulation environment. 
 
@@ -188,15 +190,15 @@ We use **Octomap** to generate voxel-grid 3D map from point cloud. To filter out
 
 We can also get a 2D projected map from the 3D octomap. In theory, the projected map can be used for navigation. But the original size of the projected map is limited to the detection distance at the beginning (about 30*30). And it is not easy to send a goal out of the map to move_base directly, e.g. (100,0,0), without increasing travel time. So we only use this package for mapping in keyboard controll mode to get a voxel-grid representation of the environment.
 
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/projected_map_octomap.png" width = 40% height = 40% />
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/nav_2d/3D_Octomap.png" width = 35% height = 35% />
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/projected_map_octomap.png" width = 40% height = 40% />
+<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/3D_Octomap.png" width = 35% height = 35% />
 
 ###  3.12. <a name='add-a-skycamera-in-the-unity-environment-(runxin)'></a>Add a skycamera in the Unity environment (Runxin)
 
 In order to better observe the relative position of the quadrotor and the building, I changed the unity environment and added a skycamera which accompanies the quadrotor. Both the executable files and the modified unity environment can be dowanloaded from the following link:
 https://syncandshare.lrz.de/getlink/fi4C8XwwgNP3gtPScV2b48pW/
 
-![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/00d409793b373930e7510fc00c265fac5313a4da/quadrotor_test1.gif)
+![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/quadrotor_test1.gif)
 
 ##  4. <a name='unfinished-task'></a>Unfinished task
 
