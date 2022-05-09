@@ -41,7 +41,7 @@ sudo apt-get install ros-melodic-octomap-server
 sudo apt-get install ros-melodic-octomap-rviz-plugins 
 ```
 
-**Step 5**. Create a workspace and clone the [repository](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor), then build the workspace. 
+**Step 5**. Create a workspace and clone the [repository](git@github.com:XHZhang01/autonomous-navigation.git), then build the workspace. 
 ```shell
 # cd ~/workspace_path
 git clone https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor.git
@@ -105,6 +105,6 @@ rosrun teleop teleop.py # smoother movement trajectory
 rosrun map_server map_saver map:=/projected_map -f PATH_TO_YOUR_FILE/mymap
 ```
 
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/projected_map_octomap.png" width = 40% height = 40% />
-<img src="https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/3D_Octomap.png" width = 35% height = 35% />
+<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/projected_map_octomap.png" width = 40% height = 40% />
+<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/3D_Octomap.png" width = 35% height = 35% />
 
