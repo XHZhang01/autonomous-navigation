@@ -4,7 +4,7 @@
 ![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/quadrotor_test1.gif)
 
 <!-- vscode-markdown-toc -->
-* 1. [Team member](#team-member)
+* 1. [Author](#author)
 * 2. [Setup](#setup)
 * 3. [Run](#run)
     * 3.1. [Autonomous mode: autonomously navigate to a target goal](#autonomous-mode:-autonomously-navigate-to-a-target-goal)
@@ -17,9 +17,8 @@
 <!-- /vscode-markdown-toc -->
 
 
-##  1. <a name='team-member'></a>Team member
-* Runxin Wang (runxin.wang@tum.de)
-* Xiaoliang Li (xiaoliang.li@tum.de)
+##  1. <a name='author'></a>Author
+* Xuhui Zhang (xuhui.zhang@tum.de)
 
 ##  2. <a name='setup'></a>Setup
 
