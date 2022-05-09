@@ -1,7 +1,7 @@
 # Group Project: Autonomous System
 
 
-![git_gif](https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor/-/raw/master/Group_Report/quadrotor_test1.gif)
+![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/quadrotor_test1.gif)
 
 <!-- vscode-markdown-toc -->
 * 1. [Team member](#team-member)
