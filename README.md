@@ -44,7 +44,7 @@ sudo apt-get install ros-melodic-octomap-rviz-plugins
 **Step 5**. Create a workspace and clone the [repository](git@github.com:XHZhang01/autonomous-navigation.git), then build the workspace. 
 ```shell
 # cd ~/workspace_path
-git clone https://gitlab.lrz.de/ros_quadrotor/ros_quadrotor.git
+git clone git@github.com:XHZhang01/autonomous-navigation.git
 catkin build
 ```
 **Step 6**. Unzip the Unity executable files to **/devel/lib/simulation**
