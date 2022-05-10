@@ -1,4 +1,4 @@
-# Group Project: Autonomous System
+# Project: Autonomous Navigation
 
 
 ![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/quadrotor_test1.gif)
