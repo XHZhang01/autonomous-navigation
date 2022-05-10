@@ -196,7 +196,7 @@ We can also get a 2D projected map from the 3D octomap. In theory, the projected
 In order to better observe the relative position of the quadrotor and the building, I changed the unity environment and added a skycamera which accompanies the quadrotor. Both the executable files and the modified unity environment can be dowanloaded from the following link:
 https://syncandshare.lrz.de/getlink/fi4C8XwwgNP3gtPScV2b48pW/
 
-![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/raw/master/Report/quadrotor_test1.gif)
+![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Report/master/Report/quadrotor_test1.gif)
 
 ##  4. <a name='external-code'></a>External code
 * navigation/src/send_goal.cpp:
