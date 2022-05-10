@@ -1,7 +1,7 @@
 # Project: Autonomous Navigation
 
 
-![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/quadrotor_test1.gif)
+![git_gif](https://github.com/XHZhang01/autonomous-navigation/blob/master/Report/quadrotor_test1.gif)
 
 <!-- vscode-markdown-toc -->
 * 1. [Author](#author)
@@ -105,6 +105,6 @@ rosrun teleop teleop.py # smoother movement trajectory
 rosrun map_server map_saver map:=/projected_map -f PATH_TO_YOUR_FILE/mymap
 ```
 
-<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/projected_map_octomap.png" width = 40% height = 40% />
-<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Group_Report/3D_Octomap.png" width = 35% height = 35% />
+<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Report/projected_map_octomap.png" width = 40% height = 40% />
+<img src="https://github.com/XHZhang01/autonomous-navigation/blob/master/Report/3D_Octomap.png" width = 35% height = 35% />
 
