@@ -1,0 +1,14 @@
+obstacle_range: 50
+raytrace_range: 51
+footprint: [[0.8, 0.8], [0.8, -0.8], [-0.8, -0.8], [-0.8, 0.8]]
+footprint_inflation: 0.2
+#robot_radius: 0.175
+inflation_radius: 4
+cost_scaling_factor: 1
+map_type: costmap
+#transform_tolerance: 1
+observation_sources: pointcloud
+pointcloud: {sensor_frame: Quadrotor/Sensors/DepthCamera, data_type: PointCloud2, topic: /realsense/depth/pointcloud, marking: true, clearing: true, min_obstacle_height: 1, max_obstacle_height: 6}
+# laser_scan_sensor: {sensor_frame: frame_name, data_type: LaserScan, topic: topic_name, marking: true, clearing: true}
+
+allow_unknown: true
